@@ -1,0 +1,1 @@
+{"name":"Группа 1","address":1,"channel":1,"sensors":[{"count":1,"period":45,"structure":[{"type":"Air_temperature","count":1},{"type":"Air_humidity","count":1}]},{"count":1,"period":20,"structure":[{"type":"Illumination_level","count":2}]}],"devices":[{"count":3,"structure":[{"type":"Phytolamp_PWM","time_type":"hour","frequency":1,"period":15,"bias":7,"count":1}]}]}
