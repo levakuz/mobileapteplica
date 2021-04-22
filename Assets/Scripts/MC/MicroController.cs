@@ -216,7 +216,7 @@ public class MicroController : MonoBehaviour
             TestPlugin.ShowLog(e.StackTrace);
         }
     }
-    public void SendToMCPlatesToRegister() //отправка на регистрацию 
+    public void SendToMCPlatesToRegister()
     {
         List<byte> bL = new List<byte>();
         var currentConfigJson = uIManager.clientLogic.downloadedJsons.Find(item => item.name.container == uIManager.clientLogic.currentConfigJson.name.container);
@@ -295,8 +295,8 @@ public class MicroController : MonoBehaviour
                                         sensorMC.sensorJson.sensorMCAuthorizations.Add(sensorMC);
                                         gO = Instantiate(uIManager.platePrefabOnOnAutentification, uIManager.plateScrollViewOnAutentification);
                                         rect = uIManager.plateScrollViewOnAutentification.rect;
-                                        rect.height += gO.GetComponent<RectTransform>().rect.height + 10;
-                                        rect.width += gO.GetComponent<RectTransform>().rect.width + 30;
+                                        rect.height += gO.GetComponent<RectTransform>().rect.height + 40;
+                                        rect.width += gO.GetComponent<RectTransform>().rect.width + 40;
                                         uIManager.plateScrollViewOnAutentification.sizeDelta = new Vector2(rect.width, rect.height);
                                         gO.GetComponent<PlatePrefabOnOnAutentification>().Init(sensorMC.adress.ToString(), "Sensor", currentConfigJson.name.container, sensorMC.itemName);
                                         TestPlugin.ShowLog("Sensor:" + sensorMC.adress + ", success");
@@ -306,8 +306,8 @@ public class MicroController : MonoBehaviour
                                         deviceMC.deviceJson.deviceMCAuthorizations.Add(deviceMC);
                                         gO = Instantiate(uIManager.platePrefabOnOnAutentification, uIManager.plateScrollViewOnAutentification);
                                         rect = uIManager.plateScrollViewOnAutentification.rect;
-                                        rect.height += gO.GetComponent<RectTransform>().rect.height + 20;
-                                        rect.width += gO.GetComponent<RectTransform>().rect.width + 30;
+                                        rect.height += gO.GetComponent<RectTransform>().rect.height + 40;
+                                        rect.width += gO.GetComponent<RectTransform>().rect.width + 40;
                                         uIManager.plateScrollViewOnAutentification.sizeDelta = new Vector2(rect.width, rect.height);
                                         gO.GetComponent<PlatePrefabOnOnAutentification>().Init(deviceMC.adress.ToString(), "Device", currentConfigJson.name.container, deviceMC.itemName);
                                         TestPlugin.ShowLog("Device:" + deviceMC.adress + ", success");
@@ -353,9 +353,6 @@ public class MicroController : MonoBehaviour
                         uIManager.plateScrollViewOnRegister.sizeDelta = new Vector2(0, 0);
                         uIManager.registationPlatesPanel.SetActive(false);
                         uIManager.autentificationPlatesPanel.SetActive(true);
-                        UpdateAuth();
-                        StartCoroutine(UpdateAuthCor());
-                        uIManager.getConfigurationsPanel.SetActive(false);
                         if (uIManager.platesInScrollViewOnAutentification.Count == 0)
                         {
                             uIManager.updateButton.interactable = false;
@@ -377,12 +374,17 @@ public class MicroController : MonoBehaviour
     }
     public void SendToMCContainer()
     {
+        Debug.Log("here");
+        //Debug.Log(Encoding.ASCII.uIManager.clientLogic.currentConfigJson.ToString());
 
 #if UNITY_EDITOR
 
 #elif UNITY_ANDROID
+        Debug.Log(uIManager.clientLogic.currentConfigJson.GetByteArray());
         uIManager.bytesSend = uIManager.clientLogic.currentConfigJson.GetByteArray().ToArray();
+
         TestPlugin.SetMessage(uIManager.bytesSend);
+        Debug.Log(uIManager.bytesSend);
 #endif
     }
     //корутина получения ответа от мк и дальнейшее преобразование его в тип ответа для контейнера

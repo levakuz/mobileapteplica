@@ -95,9 +95,11 @@ public class ClientLogic : MonoBehaviour
         Debug.Log(getContainerResponse.body);
 
         currentConfigJson = getContainerResponse.body;
+        Debug.Log("currentConfigJson.sensors");
+        Debug.Log(currentConfigJson);
         currentConfigJsonButton = button;
         Debug.Log(downloadedJsons);
-        Debug.Log(currentConfigJson.sensors);
+        Debug.Log(currentConfigJson.sensors[0]);
         if (downloadedJsons == null)
         {
             downloadedJsons = new List<ConfigJson>();
@@ -105,6 +107,7 @@ public class ClientLogic : MonoBehaviour
         }
         ConfigJson findConfigJson = downloadedJsons.Find(item => item.name.container == currentConfigJson.name.container);
         Debug.Log(findConfigJson);
+        Debug.Log(currentConfigJson);
         if (findConfigJson == null)
         {
             foreach (var item in currentConfigJson.sensors)

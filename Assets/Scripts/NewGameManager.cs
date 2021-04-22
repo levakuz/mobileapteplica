@@ -35,8 +35,8 @@ public class NewGameManager : MonoBehaviour
         closeConnectionButton.SetActive(true);
         findDevicesButton.SetActive(false);
         StartCoroutine(GetNameMicroC());
-        nickname.text = nameMC.text;
-        nickname.text = Mconnection.GetComponent<Text>().text;
+        //nickname.text = nameMC.text;
+        //nickname.text = Mconnection.GetComponent<Text>().text;
     }
 
 
@@ -47,6 +47,7 @@ public class NewGameManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         nameMC.text = "Вы подключены к MCSimulator";
         nickname.text = "Устройство: MCSimulator";
+        Debug.Log(nickname.text);
         foreach (var item in buttons)
         {
             item.interactable = true;
@@ -71,11 +72,11 @@ public class NewGameManager : MonoBehaviour
         byte[] iA;
         iA = TestPlugin.GetMessage(l);
         nameMC.text = "Вы подключены к ";
-        nickname.text = "Устройство: "
+        //nickname.text = "Устройство: ";
         for (int j = 0; j < iA.Length; j++)
         {
             nameMC.text += (char)iA[j];
-            nickname.text += (char)iA[j];
+            //nickname.text += (char)iA[j];
         }
         foreach (var item in buttons)
         {
@@ -134,21 +135,34 @@ public class NewGameManager : MonoBehaviour
         closeConnectionButton.SetActive(false);
         findDevicesButton.SetActive(true);
         StopCoroutine(GetNameMicroC());
-        nickname.text = "";
+        //nickname.text = "";
         nameMC.text = "";
         Debug.Log("here");
     }
     //вызывается при клике кнопки "список устройств"
     public void ClickOnDeviceList()
     {
-        CurrentPanelSetActive(deviceListPanel);
-        //SettingSpriteBackgroundsButtons(1);
+        if (uIManager.Logged == true)
+        {
+            CurrentPanelSetActive(deviceListPanel);
+            //SettingSpriteBackgroundsButtons(1);
+        }
+        else{
+                LoginAlert.SetActive(true);
+        }
+
     }
     //вызывается при клике кнопки "настройки"
     public void ClickOnSettings()
     {
-        CurrentPanelSetActive(settingsPanel);
+        if (uIManager.Logged == true)
+        {
+            CurrentPanelSetActive(settingsPanel);
+        }
         //SettingSpriteBackgroundsButtons(2);
+        else{
+                LoginAlert.SetActive(true);
+        }
     }
 
     //вызывается при клике кнопки "список не зарегистрированных устройств"
@@ -178,12 +192,16 @@ public class NewGameManager : MonoBehaviour
         {
             CurrentPanelSetActive(webPanel);
         }
+        else{
+            LoginAlert.SetActive(true);
+        }
     }
     public void ClickOnExitAccount()
     {
         if (uIManager.Logged == true)
         {
             ExitAlert.SetActive(true);
+            uIManager.Logged = false;
         }
     }
     public void CurrentPanelSetActive(GameObject panel)
@@ -206,6 +224,28 @@ public class NewGameManager : MonoBehaviour
             imagesB[i].sprite = iconsNS[i];
         }
         imagesB[index].sprite = iconsS[index];
+    }
+
+    public void sendmsg()
+    {   
+        byte[] bytes = {0,0,0,25};
+        TestPlugin.SetMessage( bytes);
+        StartCoroutine(SendToMCContainerWaitResponse());
+
+    }
+    public IEnumerator SendToMCContainerWaitResponse() 
+    {   
+        byte[] bA;
+        string i = "0";
+        float timeValue = 0;
+        while (i == "0" & timeValue < 2f)
+        {
+            yield return new WaitForEndOfFrame();
+            timeValue += Time.deltaTime;
+            i = TestPlugin.GetLenght().ToString();
+        }
+        bA = TestPlugin.GetMessage(1);
+        Debug.Log(bA[0].ToString());
     }
 
 }

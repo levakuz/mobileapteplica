@@ -1,0 +1,17 @@
+com.DefaultCompany.mobileappteplica
+id list_devices
+id tvAddressDevice
+id tvNameDevice
+id unitySurfaceView
+layout activity_main
+layout device_item
+layout list_devices_view
+mipmap app_icon
+mipmap app_icon_round
+mipmap ic_launcher_background
+mipmap ic_launcher_foreground
+string app_name
+string game_view_content_description
+style BaseUnityTheme
+style UnityThemeSelector
+style UnityThemeSelector_Translucent

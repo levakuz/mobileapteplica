@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static ClientLogic;
 using static GameManager;
-//using static NewGameManager;
+using static NewGameManager;
 public class UIManager : MonoBehaviour
 {
 
@@ -151,8 +151,9 @@ public class UIManager : MonoBehaviour
     {
         //getConfigurationsPanel.SetActive(true);
         //authorizationPanel.SetActive(false);
-        newGameManager.ClickOnSettings();
         Logged = true;
+        newGameManager.ClickOnSettings();
+        
     }
     //очистка предметов в скролл вью в панели контейнера(одного!)
     public void ClearItemsInContainerItemsScrollView()
@@ -396,8 +397,11 @@ public class UIManager : MonoBehaviour
     //отправка плат на регистрацию на мк
     public void SendToMCPlatesToRegister()
     {
+        
         microController.SendToMCPlatesToRegister();
         StartCoroutine(microController.SendToMCPlatesToRegisterWaitResponse());
+        UpdateAuth();
+        //StartCoroutine(microController.UpdateAuthCor());
 
     }
     //выход из аккаунта
@@ -412,7 +416,7 @@ public class UIManager : MonoBehaviour
     //отправка запроса на обновление данных на мк
     public void UpdateAuth()
     {
-        if (platesInScrollViewOnAutentification.Count == 0)
+        /*if (platesInScrollViewOnAutentification.Count == 0)
         {
             updateButton.interactable = false;
         }
@@ -420,7 +424,7 @@ public class UIManager : MonoBehaviour
         {
             updateButton.interactable = true;
         }
-        if (platesInScrollViewOnAutentification.Count == 0) return;
+        if (platesInScrollViewOnAutentification.Count == 0) return;*/
         microController.UpdateAuth();
         StartCoroutine(microController.UpdateAuthCor());
     }
