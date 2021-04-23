@@ -718,6 +718,7 @@ GameObject:
   - component: {fileID: 1247630704}
   - component: {fileID: 1247630706}
   - component: {fileID: 4414857445549803244}
+  - component: {fileID: 4823295896513344608}
   m_Layer: 5
   m_Name: Toggler
   m_TagString: Untagged
@@ -782,7 +783,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 4414857445549803244}
           m_MethodName: isClick
           m_Mode: 1
           m_Arguments:
@@ -806,8 +807,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
-  DeviceAlert: {fileID: 0}
+  Canvas: {fileID: 0}
+  UIManager: {fileID: 4823295896513344608}
+  DeviceAlert: {fileID: 8789348004839757557, guid: 7986cbcb186ebb229b91d0e5ad6eb736,
+    type: 3}
   animator: {fileID: 1247630704}
+--- !u!114 &4823295896513344608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8938137643062064943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89aa53a7e35c85c49ba071b41b2ee232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  containersScrollView: {fileID: 0}
+  containerPrefab: {fileID: 0}
+  newGameManager: {fileID: 0}
+  clientServerWindow: {fileID: 0}
+  authorizationPanel: {fileID: 0}
+  clientLogic: {fileID: 0}
+  loginInputField: {fileID: 0}
+  passwordInputField: {fileID: 0}
+  getConfigurationsPanel: {fileID: 0}
+  containerItemsPanel: {fileID: 0}
+  containerItemsScrollView: {fileID: 0}
+  itemFromContainerPrefab: {fileID: 0}
+  LoginAlert: {fileID: 0}
+  sensorFromContainerItemPanel: {fileID: 0}
+  deviceFromContainerItemPanel: {fileID: 0}
+  sensorFromContainerItemCount: {fileID: 0}
+  sensorFromContainerItemPeriod: {fileID: 0}
+  nickname: 
+  textDisplay: {fileID: 0}
+  deviceFromContainerItemCount: {fileID: 0}
+  deviceFromContainerItemPeriod: {fileID: 0}
+  itemSenserStructurePrefab: {fileID: 0}
+  itemDeviceStructurePrefab: {fileID: 0}
+  itemsSenserStructureScrollView: {fileID: 0}
+  itemsDeviceStructureScrollView: {fileID: 0}
+  containerItemsScrollViewList: []
+  itemsSenserStructureScrollViewList: []
+  itemsDeviceStructureScrollViewList: []
+  itemsContainersScrollViewList: []
+  gameObjects: []
+  gameObjects1: []
+  bytesSend: 
+  gameObjectsButtonsSend: []
+  changeContainersButton: {fileID: 0}
+  platePrefabOnRegister: {fileID: 0}
+  platePrefabOnOnAutentification: {fileID: 0}
+  plateScrollViewOnRegister: {fileID: 0}
+  plateScrollViewOnAutentification: {fileID: 0}
+  platesInScrollViewOnRegister: []
+  platesInScrollViewOnAutentification: []
+  registationPlatesPanel: {fileID: 0}
+  autentificationPlatesPanel: {fileID: 0}
+  panels: []
+  rememberToggle: {fileID: 0}
+  isRememberAutentification: 0
+  currentContainerSend: {fileID: 0}
+  currentSensorSend: {fileID: 0}
+  currentDeviceSend: {fileID: 0}
+  sendRegButton: {fileID: 0}
+  updateButton: {fileID: 0}
+  Logged: 0
+  isChange: 0
+  microController: {fileID: 0}
 --- !u!1 &8988108895718229596
 GameObject:
   m_ObjectHideFlags: 0

@@ -123,8 +123,8 @@ public class UIManager : MonoBehaviour
     }
     public void OpenContainerList()
     {
-        if (Logged == true)
-        {
+        //if (Logged == true)
+       // {
             clientLogic.RequestGetContainers();
             clientServerWindow.SetActive(true);
             authorizationPanel.SetActive(false);
@@ -133,11 +133,11 @@ public class UIManager : MonoBehaviour
             deviceFromContainerItemPanel.SetActive(false);
             containerItemsPanel.SetActive(false);
             
-        }
-        else 
-        {
-            LoginAlert.SetActive(true);
-        }
+       // }
+       // else 
+       // {
+       //     LoginAlert.SetActive(true);
+       // }
     }
 
     //метод вызываемый при клике на кнопку "Войти или Авторизация"

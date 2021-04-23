@@ -16,13 +16,14 @@ public class NewGameManager : MonoBehaviour
     public GameObject Mconnection;
 
     public Button[] buttons;
-    public GameObject LoginAlert, ExitAlert;
+    public GameObject LoginAlert, ExitAlert, DeviceAlert;
 
     public GameObject closeConnectionButton, findDevicesButton;
 
     public GameObject webPanel;
     public Button sendRegButton;
     public UIManager uIManager;
+    public bool DeviceAlert_exist;
 
     //аналог map из c++
     public float Convert(float value, float From1, float From2, float To1, float To2)
@@ -174,10 +175,10 @@ public class NewGameManager : MonoBehaviour
     public void ClickOnContainerList()
     {
         uIManager.OpenContainerList();
-        if (uIManager.Logged == true) 
-        {
-            CurrentPanelSetActive(webPanel);
-        }
+        //if (uIManager.Logged == true) 
+        //{
+        CurrentPanelSetActive(webPanel);
+       // }
     }
     public void ClickOnExitAccount()
     {
@@ -198,6 +199,11 @@ public class NewGameManager : MonoBehaviour
     public void AlertClose(GameObject gameObject)
     {
         gameObject.SetActive(false);
+    }
+    public void AlertCloseDelete(GameObject gameObject)
+    {
+        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
     public void SettingSpriteBackgroundsButtons(int index)
     {
