@@ -22,7 +22,7 @@ public class WebSocket : MonoBehaviour
 
                 //Implementation of timeout of 5000 ms
                 var source = new CancellationTokenSource();
-                source.CancelAfter(5000);
+                source.CancelAfter(10000);
 
                 await ws.ConnectAsync(serverUri, source.Token);
                 //await ws.ConnectAsync(serverUri, CancellationToken.None);
@@ -35,10 +35,10 @@ public class WebSocket : MonoBehaviour
                                          true, source.Token);
 
                     //Receive buffer
-                    var receiveBuffer = new byte[2000];
+                    var receiveBuffer = new byte[5000];
                     //Multipacket response
                     var offset = 0;
-                    var dataPerPacket = 10; //Just for example
+                    var dataPerPacket = 1; //Just for example
                     WebSocketReceiveResult result;
                     do
                     {
