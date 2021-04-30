@@ -1,4 +1,4 @@
-#Wed Apr 21 15:30:44 MSK 2021
+#Fri Apr 30 17:35:23 MSK 2021
 base.0=/home/levakuz/unityproject/mobileappteplica/Temp/gradleOut/launcher/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

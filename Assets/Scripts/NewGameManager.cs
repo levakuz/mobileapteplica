@@ -226,14 +226,21 @@ public class NewGameManager : MonoBehaviour
         imagesB[index].sprite = iconsS[index];
     }
 
-    public void sendmsg()
+   /* public void sendmsg()
     {   
         byte[] bytes = {0,0,0,25};
         TestPlugin.SetMessage( bytes);
         StartCoroutine(SendToMCContainerWaitResponse());
 
+    }*/
+
+    public void ChangeMode(int mode)
+    {   
+        TestPlugin.SetMessage(BitConverter.GetBytes(mode));
+        StartCoroutine(SendToMCContainerWaitResponse(mode));
+
     }
-    public IEnumerator SendToMCContainerWaitResponse() 
+    public IEnumerator SendToMCContainerWaitResponse(int mode) 
     {   
         byte[] bA;
         string i = "0";
@@ -246,6 +253,15 @@ public class NewGameManager : MonoBehaviour
         }
         bA = TestPlugin.GetMessage(1);
         Debug.Log(bA[0].ToString());
+        if (bA[0].ToString() == mode.ToString())
+        {
+            Debug.Log ("Подтверждение пришло");
+        }
+        else
+        {
+            Debug.Log ("Подтверждение не ложно");   
+        }
+
     }
 
 }

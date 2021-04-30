@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Apr 21 15:30:44 MSK 2021
+#Fri Apr 30 17:35:23 MSK 2021
 2.path=bin/Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll
 14.set=ASSET
 107.baseType=DIRECTORY
