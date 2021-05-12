@@ -235,12 +235,14 @@ public class NewGameManager : MonoBehaviour
     }*/
 
     public void ChangeMode(int mode)
-    {   
+    {   Debug.Log(BitConverter.GetBytes(mode));
+        Debug.Log(mode);
         TestPlugin.SetMessage(BitConverter.GetBytes(mode));
-        StartCoroutine(SendToMCContainerWaitResponse(mode));
+        StartCoroutine(SendToMCModeWaitResponse(mode));
+        
 
     }
-    public IEnumerator SendToMCContainerWaitResponse(int mode) 
+    public IEnumerator SendToMCModeWaitResponse(int mode) 
     {   
         byte[] bA;
         string i = "0";
@@ -259,7 +261,7 @@ public class NewGameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log ("Подтверждение не ложно");   
+            Debug.Log ("Подтверждение ложно");   
         }
 
     }
