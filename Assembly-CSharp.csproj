@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\NewGameManager.cs" />
     <Compile Include="Assets\Scripts\PlatePrefabOnOnAutentification.cs" />
     <Compile Include="Assets\Scripts\ScrollViewController.cs" />
+    <Compile Include="Assets\Scripts\SpawnPanel.cs" />
     <Compile Include="Assets\Scripts\Toggler.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\WebSocket\WebSocket.cs" />
